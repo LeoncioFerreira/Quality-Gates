@@ -1,5 +1,6 @@
 package sistema.alunos.view
 
+import sistema.alunos.model.Aluno
 import sistema.alunos.service.EstatisticasTurma
 import sistema.alunos.service.RelatorioAcademico
 
@@ -8,6 +9,17 @@ import sistema.alunos.service.RelatorioAcademico
  * Autor: Paulo
  */
 object ResultadoFormatter {
+
+    fun formatarAlunos(alunos: List<Aluno>): String {
+        if (alunos.isEmpty()) return "Nenhum aluno cadastrado."
+
+        return alunos
+            .sortedBy { it.id }
+            .joinToString(
+                separator = "\n",
+                prefix = "Alunos cadastrados:\n",
+            ) { aluno -> "- ${aluno.id} - ${aluno.nome}" }
+    }
 
     fun formatarRelatorio(relatorio: RelatorioAcademico): String {
         val builder = StringBuilder()

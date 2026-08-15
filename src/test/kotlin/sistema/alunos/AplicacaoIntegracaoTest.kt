@@ -57,9 +57,10 @@ class AplicacaoIntegracaoTest {
         // Simulando a ordem exata do que o usuário digitaria:
         val entradasInt = mutableListOf(
             1, // Escolhe opção 1 do menu principal (Cadastrar)
+            5, // Escolhe opção 5 do menu principal (Listar alunos)
             2, // Escolhe opção 2 do menu principal (Avaliação)
             3, // Escolhe opção 3 do menu principal (Relatório)
-            5  // Escolhe opção 5 do menu principal (Sair)
+            6  // Escolhe opção 6 do menu principal (Sair)
         )
         val entradasString = mutableListOf(
             "A001", "Paulo Landim", // Para o cadastro
@@ -92,6 +93,7 @@ class AplicacaoIntegracaoTest {
 
         // Verifica se o aluno foi cadastrado
         assertTrue(todasAsSaidas.contains("Aluno Paulo Landim cadastrado com sucesso!"), "Deveria ter cadastrado o aluno")
+        assertTrue(todasAsSaidas.contains("- A001 - Paulo Landim"), "Deveria listar o aluno cadastrado")
 
         // Verifica se as notas foram lançadas
         assertTrue(todasAsSaidas.contains("Avaliacao registrada com sucesso para o aluno A001!"), "Deveria ter registrado a avaliação")

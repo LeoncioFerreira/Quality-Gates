@@ -13,6 +13,7 @@ interface Controlador {
     fun registrarAvaliacao()
     fun consultarRelatorio()
     fun verEstatisticas()
+    fun listarAlunos()
 }
 
 /**
@@ -44,8 +45,8 @@ class MenuPrincipal(
             exibirMenuPrincipal()
             val opcao = input.lerInteiro("Escolha uma opcao: ")
 
-            if (opcao !in 1..5) {
-                view.exibir("[ERRO] Opcao invalida. Escolha entre 1 e 5.")
+            if (opcao !in 1..6) {
+                view.exibir("[ERRO] Opcao invalida. Escolha entre 1 e 6.")
                 continue
             }
 
@@ -54,7 +55,8 @@ class MenuPrincipal(
                 2 -> controller.registrarAvaliacao()
                 3 -> controller.consultarRelatorio()
                 4 -> controller.verEstatisticas()
-                5 -> {
+                5 -> controller.listarAlunos()
+                6 -> {
                     view.exibir("Encerrando o sistema... Ate logo!")
                     executando = false
                 }
@@ -70,7 +72,8 @@ class MenuPrincipal(
         view.exibir("| 2. Registrar avaliacao                 |")
         view.exibir("| 3. Consultar relatorio                 |")
         view.exibir("| 4. Ver estatisticas                    |")
-        view.exibir("| 5. Sair                                |")
+        view.exibir("| 5. Listar alunos                       |")
+        view.exibir("| 6. Sair                                |")
         view.exibir("+========================================+")
     }
 }

@@ -30,16 +30,18 @@ class MenuPrincipalTest {
         var avaliacao = false
         var relatorio = false
         var estatisticas = false
+        var listagem = false
 
         override fun cadastrarAluno() { aluno = true }
         override fun registrarAvaliacao() { avaliacao = true }
         override fun consultarRelatorio() { relatorio = true }
         override fun verEstatisticas() { estatisticas = true }
+        override fun listarAlunos() { listagem = true }
     }
 
     @Test
     fun `deve chamar cadastrarAluno e encerrar`() {
-        val entrada = MockEntrada(listOf(1, 5))
+        val entrada = MockEntrada(listOf(1, 6))
         val saida = MockSaida()
         val controller = MockController()
         val menu = MenuPrincipal(entrada, saida, controller)
@@ -53,7 +55,7 @@ class MenuPrincipalTest {
     @Test
     fun `deve apresentar todas as opcoes do menu`() {
         val saida = MockSaida()
-        val menu = MenuPrincipal(MockEntrada(listOf(5)), saida, MockController())
+        val menu = MenuPrincipal(MockEntrada(listOf(6, 5)), saida, MockController())
 
         menu.iniciar()
 
@@ -61,13 +63,14 @@ class MenuPrincipalTest {
         assertTrue(saida.mensagens.any { it.contains("2. Registrar avaliacao") })
         assertTrue(saida.mensagens.any { it.contains("3. Consultar relatorio") })
         assertTrue(saida.mensagens.any { it.contains("4. Ver estatisticas") })
-        assertTrue(saida.mensagens.any { it.contains("5. Sair") })
+        assertTrue(saida.mensagens.any { it.contains("5. Listar alunos") })
+        assertTrue(saida.mensagens.any { it.contains("6. Sair") })
     }
 
     @Test
     fun `deve delegar registro de avaliacao`() {
         val controller = MockController()
-        MenuPrincipal(MockEntrada(listOf(2, 5)), MockSaida(), controller).iniciar()
+        MenuPrincipal(MockEntrada(listOf(2, 6)), MockSaida(), controller).iniciar()
 
         assertTrue(controller.avaliacao)
     }
@@ -75,7 +78,7 @@ class MenuPrincipalTest {
     @Test
     fun `deve delegar consulta de relatorio`() {
         val controller = MockController()
-        MenuPrincipal(MockEntrada(listOf(3, 5)), MockSaida(), controller).iniciar()
+        MenuPrincipal(MockEntrada(listOf(3, 6)), MockSaida(), controller).iniciar()
 
         assertTrue(controller.relatorio)
     }
@@ -83,8 +86,16 @@ class MenuPrincipalTest {
     @Test
     fun `deve delegar exibicao de estatisticas`() {
         val controller = MockController()
-        MenuPrincipal(MockEntrada(listOf(4, 5)), MockSaida(), controller).iniciar()
+        MenuPrincipal(MockEntrada(listOf(4, 6)), MockSaida(), controller).iniciar()
 
         assertTrue(controller.estatisticas)
+    }
+
+    @Test
+    fun `deve delegar listagem de alunos`() {
+        val controller = MockController()
+        MenuPrincipal(MockEntrada(listOf(5, 6)), MockSaida(), controller).iniciar()
+
+        assertTrue(controller.listagem)
     }
 }

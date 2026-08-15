@@ -12,6 +12,7 @@ import sistema.alunos.service.EstatisticaTurmaService
 import sistema.alunos.service.RelatorioAcademicoService
 import sistema.alunos.view.Controlador
 import sistema.alunos.view.Entrada
+import sistema.alunos.view.ResultadoFormatter
 import sistema.alunos.view.Saida
 
 class ConsoleAlunoController(
@@ -39,8 +40,12 @@ class ConsoleAlunoController(
     override fun registrarAvaliacao() {
         saida.exibir("\n--- REGISTRO DE NOTAS ---")
         try {
-            val id = entrada.lerTexto("Digite a matricula do aluno: ")
-
+            val id = entrada.lerTexto("Digite a matricula do aluno (0 para voltar): ")
+            if (id == "0") {
+                saida.exibir("Operacao cancelada.")
+                return
+            }
+            cadastroService.buscarPorId(id)
 
             val codigoDisciplina = entrada.lerTexto("Digite o codigo da disciplina: ")
             val nomeDisciplina = entrada.lerTexto("Digite o nome da disciplina: ")
@@ -64,7 +69,11 @@ class ConsoleAlunoController(
     override fun consultarRelatorio() {
         saida.exibir("\n--- CONSULTA DE BOLETIM ---")
         try {
-            val id = entrada.lerTexto("Digite a matricula do aluno: ")
+            val id = entrada.lerTexto("Digite a matricula do aluno (0 para voltar): ")
+            if (id == "0") {
+                saida.exibir("Operacao cancelada.")
+                return
+            }
             val relatorio = relatorioService.gerarRelatorio(id)
 
             saida.exibirResultado(sistema.alunos.view.ResultadoFormatter.formatarRelatorio(relatorio))
@@ -81,5 +90,10 @@ class ConsoleAlunoController(
         } catch (e: Exception) {
             saida.exibirErro(e.message ?: "Erro desconhecido ao calcular estatisticas.")
         }
+    }
+
+    override fun listarAlunos() {
+        val alunos = cadastroService.listarAlunos()
+        saida.exibirResultado(ResultadoFormatter.formatarAlunos(alunos))
     }
 }

@@ -1,4 +1,4 @@
-name: CI - Paradigmas
+name: CI - Quality Gates
 
 on:
   push:
@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: read
 
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
@@ -17,9 +18,13 @@ concurrency:
 
 jobs:
   build:
-    name: Pipeline CI
+    name: Quality Gate
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_PROJECT_KEY: ${{ vars.SONAR_PROJECT_KEY }}
+      SONAR_ORGANIZATION: ${{ vars.SONAR_ORGANIZATION }}
 
     steps:
       - name: Baixar o código
@@ -37,5 +42,35 @@ jobs:
       - name: Permitir a execução do Gradle Wrapper
         run: chmod +x gradlew
 
-      - name: Compilar e executar os testes
-        run: ./gradlew clean test build --no-daemon
+      - name: Executar o Quality Gate
+        run: ./gradlew clean qualityGate --continue --no-daemon
+
+      - name: Publicar relatórios dos testes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorios-testes
+          path: build/reports/tests/
+          if-no-files-found: warn
+
+      - name: Publicar relatório de cobertura
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-jacoco
+          path: build/reports/jacoco/
+          if-no-files-found: warn
+
+      - name: Publicar relatórios de análise estática
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorios-analise-estatica
+          path: |
+            build/reports/detekt/
+            build/reports/ktlint/
+          if-no-files-found: warn
+
+      - name: Analisar no SonarQube Cloud
+        if: env.SONAR_TOKEN != '' && env.SONAR_PROJECT_KEY != '' && env.SONAR_ORGANIZATION != ''
+        run: ./gradlew sonar --no-daemon

@@ -5,8 +5,8 @@
 package sistema.alunos.model
 
 data class Aluno(
-    val id: String,
-    val nome: String,
+    val  id: String,
+    val  nome: String,
 ) {
     init {
         require(id.isNotBlank()) {

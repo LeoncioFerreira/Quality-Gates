@@ -10,8 +10,8 @@ data class Avaliacao(
     val notas: List<Nota>,
 ) {
     init  {
-    require(notas.size == 2) {
-        "A avaliacao deve possuir exatamente duas notas."
+        require(notas.size == 2) {
+            "A avaliacao deve possuir exatamente duas notas."
         }
     }
 }

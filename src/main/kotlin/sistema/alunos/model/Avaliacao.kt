@@ -9,7 +9,7 @@ data class Avaliacao(
     val disciplina: Disciplina,
     val notas: List<Nota>,
 ) {
-    init {
+    init git {
         require(notas.size == 2) {
             "A avaliacao deve possuir exatamente duas notas."
         }

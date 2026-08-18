@@ -6,4 +6,4 @@ package sistema.alunos.model
 
 class DetektExperimento {
     fun exemplo(): Int = 999
-} 
+}

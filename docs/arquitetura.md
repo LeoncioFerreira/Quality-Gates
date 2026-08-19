@@ -29,4 +29,3 @@ Interpreta as ações recebidas da View e coordena os serviços do Model. O Cont
 - `CalculadoraAcademica`: calcula a média e determina a situação.
 - `Entrada`: lê textos, inteiros e números decimais.
 - `Saida`: apresenta mensagens.
-        teste

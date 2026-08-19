@@ -4,9 +4,8 @@
  */
 package sistema.alunos.view
 
-import org.junit.jupiter.api.Disabled
-import java.io.*
 import kotlin.test.*
+import java.io.*
 
 class ConsoleViewTest {
 
@@ -26,7 +25,6 @@ class ConsoleViewTest {
         System.setOut(originalOut)
     }
 
-    @Disabled("Experimento JaCoCo")
     @Test
     fun `deve exibir mensagem simples`() {
         consoleView.exibir("Olá mundo")
@@ -97,7 +95,7 @@ class ConsoleViewTest {
     fun `deve limpar tela sem falhar`() {
         try {
             consoleView.limparTela()
-            assertTrue(true)
+            assertTrue(true) // passou sem erro
         } catch (e: Exception) {
             fail("limparTela lançou uma exceção inesperada: $e")
         }

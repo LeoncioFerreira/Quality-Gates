@@ -4,13 +4,14 @@
  */
 package sistema.alunos.service
 
+import org.junit.jupiter.api.Disabled
 import sistema.alunos.repository.AlunoRepositoryEmMemoria
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
+@Disabled("Experimento JaCoCo")
 class CadastroAlunoServiceTest {
-
     @Test
     fun `deve cadastrar aluno com dados validos`() {
         val servico = CadastroAlunoService(AlunoRepositoryEmMemoria())

@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>EmptyFunctionBlock:AplicacaoIntegracaoTest.kt$AplicacaoIntegracaoTest.SaidaMock${}</ID>
+    <ID>EmptyFunctionBlock:MenuPrincipalTest.kt$MenuPrincipalTest.MockSaida${}</ID>
+    <ID>MagicNumber:ConsoleView.kt$ConsoleView$40</ID>
+    <ID>MagicNumber:ConsoleView.kt$ConsoleView$50</ID>
+    <ID>MagicNumber:MenuPrincipal.kt$MenuPrincipal$3</ID>
+    <ID>MagicNumber:MenuPrincipal.kt$MenuPrincipal$4</ID>
+    <ID>MagicNumber:MenuPrincipal.kt$MenuPrincipal$5</ID>
+    <ID>MagicNumber:MenuPrincipal.kt$MenuPrincipal$6</ID>
+    <ID>MagicNumber:Nota.kt$Nota$10.0</ID>
+    <ID>MaxLineLength:AplicacaoIntegracaoTest.kt$AplicacaoIntegracaoTest$assertTrue(todasAsSaidas.contains("Aluno Paulo Landim cadastrado com sucesso!"), "Deveria ter cadastrado o aluno")</ID>
+    <ID>MaxLineLength:AplicacaoIntegracaoTest.kt$AplicacaoIntegracaoTest$assertTrue(todasAsSaidas.contains("Avaliacao registrada com sucesso para o aluno A001!"), "Deveria ter registrado a avaliação")</ID>
+    <ID>MaxLineLength:CalculadoraDeMediaTest.kt$*</ID>
+    <ID>MaxLineLength:ExemploInteropKotlin.kt$println("Teste concluido com sucesso: o Kotlin conseguiu importar, instanciar e executar uma classe escrita em Java na mesma plataforma JVM.")</ID>
+    <ID>NewLineAtEndOfFile:AlunoRepositoryEmMemoria.kt$sistema.alunos.repository.AlunoRepositoryEmMemoria.kt</ID>
+    <ID>NewLineAtEndOfFile:AlunoRepositoryEmMemoriaTest.kt$sistema.alunos.repository.AlunoRepositoryEmMemoriaTest.kt</ID>
+    <ID>NewLineAtEndOfFile:AvaliacaoRepository.kt$sistema.alunos.repository.AvaliacaoRepository.kt</ID>
+    <ID>NewLineAtEndOfFile:AvaliacaoRepositoryEmMemoria.kt$sistema.alunos.repository.AvaliacaoRepositoryEmMemoria.kt</ID>
+    <ID>NewLineAtEndOfFile:AvaliacaoService.kt$sistema.alunos.service.AvaliacaoService.kt</ID>
+    <ID>NewLineAtEndOfFile:CadastroAlunoService.kt$sistema.alunos.service.CadastroAlunoService.kt</ID>
+    <ID>NewLineAtEndOfFile:CadastroAlunoServiceTest.kt$sistema.alunos.service.CadastroAlunoServiceTest.kt</ID>
+    <ID>NewLineAtEndOfFile:EstatisticaTurmaService.kt$sistema.alunos.service.EstatisticaTurmaService.kt</ID>
+    <ID>NewLineAtEndOfFile:Extensoes.kt$sistema.alunos.service.Extensoes.kt</ID>
+    <ID>ReturnCount:EstatisticaTurmaService.kt$EstatisticaTurmaService$fun calcularEstatisticas(): EstatisticasTurma</ID>
+    <ID>SwallowedException:ConsoleView.kt$ConsoleView$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:ConsoleAlunoController.kt$ConsoleAlunoController$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:ConsoleView.kt$ConsoleView$e: Exception</ID>
+    <ID>UseCheckOrError:AvaliacaoService.kt$AvaliacaoService$throw IllegalStateException("O aluno ja possui avaliacao para a disciplina ${disciplina.nome}.")</ID>
+    <ID>UseCheckOrError:ConsoleInput.kt$ConsoleInput$throw IllegalStateException("Entrada encerrada pelo usuario.")</ID>
+    <ID>UseCheckOrError:RelatorioAcademicoService.kt$RelatorioAcademicoService$throw IllegalStateException("Ausencia de avaliacoes para o aluno.")</ID>
+    <ID>WildcardImport:ConsoleInputTest.kt$import java.io.*</ID>
+    <ID>WildcardImport:ConsoleInputTest.kt$import kotlin.test.*</ID>
+    <ID>WildcardImport:ConsoleViewTest.kt$import java.io.*</ID>
+    <ID>WildcardImport:ConsoleViewTest.kt$import kotlin.test.*</ID>
+    <ID>WildcardImport:MenuPrincipalTest.kt$import kotlin.test.*</ID>
+    <ID>WildcardImport:ServicosAcademicosTest.kt$import org.junit.jupiter.api.Assertions.*</ID>
+    <ID>WildcardImport:ServicosAcademicosTest.kt$import sistema.alunos.model.*</ID>
+  </CurrentIssues>
+</SmellBaseline>
